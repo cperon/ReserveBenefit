@@ -9,13 +9,15 @@
 # Platform: x86_64-w64-mingw32/x64 (64-bit)
 ###########################################################################################################
 
-setwd('C:/Users/Clara PERON/Documents/ReserveBenefit/')
+setwd('C:/Users/Clara PERON/Documents/Collaborations/ReserveBenefit/')
 
 library(fields)
 library(raster)
 library(ncdf4)
 library(animation)
 library(rgdal)
+# Install ImageMagick on your computer to run the animation saveGIF() function
+#https://www.imagemagick.org/script/index.php
 
 # Load data
   # coastlines
@@ -26,7 +28,7 @@ library(rgdal)
    barcelona <-  c(2.158889, 41.38861) 
    
   # mpas
-   mpas <- readOGR('C:/Users/Clara PERON/Documents/ReserveBenefit/data/MPA_MedW.shp', 'MPA_MedW')
+   mpas <- readOGR('C:/Users/Clara PERON/Documents/Collaborations/ReserveBenefit/data/MPA_MedW.shp', 'MPA_MedW')
    mpas1 <- mpas[!mpas@data$IUCN_CAT %in% c('Not Reported', 'Not Applicable'),]
 
   # net Primary Production in sea water 
@@ -71,8 +73,8 @@ library(rgdal)
     # Make an animation
       
     # Set animation parameters
-    oopt = ani.options(ani.height = 800, ani.width = 1000, interval=1.5, verbose=F)
-    ani.options(convert = 'C:/PROGRA~1/ImageMagick-7.0.5-Q16/magick.exe', ani.height = 800, ani.width = 1000, interval=1.5, verbose=F)
+    #oopt = ani.options(ani.height = 800, ani.width = 1000, interval=1.5, verbose=F)
+    ani.options(convert = 'C:/PROGRA~1/ImageMagick-7.0.6-Q16/magick.exe', ani.height = 800, ani.width = 1000, interval=1.5, verbose=F)
     
     # Make an Gif animation for total effort
     saveGIF({
